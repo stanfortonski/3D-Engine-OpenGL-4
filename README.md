@@ -15,15 +15,15 @@
 - Heightmap to normalmap converter based on Sobel operator
 - Input/output based on GLFW
 - Model loader based on Assimp
-- Skeletal Animations
+- Skeletal animations
 - Font rendering based on FreeType
 
 #### Engine delivers simple shaders that support features of this engine.
 
 ### Engine structure:
 ```
-  / - config, include, base engine class
-  base/ - shaders compliations and textures
+  / - base engine class, config, include 
+  base/ - shader and program compilators, texture class
   buffer/ - buffers e.g framebuffers
   camera/ - classes of cameras 
   renderable/ - everything what you can render
@@ -41,5 +41,5 @@
 - GLM library - https://glm.g-truc.net
 - Assimp library - https://github.com/assimp/assimp
 - FreeType library - https://www.freetype.org
-  
+- STB_IMAGE library - https://github.com/nothings/stb
   
