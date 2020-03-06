@@ -42,4 +42,7 @@
 - Assimp library - https://github.com/assimp/assimp
 - FreeType library - https://www.freetype.org
 - STB_IMAGE library - https://github.com/nothings/stb
+
+
+#### Example application that uses this graphics engine: https://github.com/stanfortonski/Procedural-Terrain-Generator-OpenGL
   
