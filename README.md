@@ -1,5 +1,5 @@
 # 3D-Engine-OpenGL-4
-## 3D Game Engine (made with API OpenGL 4.1) for C++
+### 3D Game Engine (made with API OpenGL 4.1) for C++
 
 ### Engine features:
 - Blinn-Phong lighting
