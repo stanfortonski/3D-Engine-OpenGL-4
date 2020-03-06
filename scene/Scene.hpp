@@ -65,6 +65,7 @@ namespace Engine
     std::vector<Light*> & getLights(){return lights;}
 
     void setShadows(bool val){allowShadows = val;}
+    bool isAllowShadows() const{return allowShadows;}
   };
 }
 #endif

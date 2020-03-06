@@ -1,4 +1,11 @@
 /* Copyright (c) 2020 by Stan Fortoński */
+/* This project is using below libraries */
+/* GLEW library - http://glew.sourceforge.net */
+/* GLFW library - https://www.glfw.org */
+/* GLM library - https://glm.g-truc.net */
+/* Assimp library - https://github.com/assimp/assimp */
+/* FreeType library - https://www.freetype.org */
+/* STB_IMAGE library - https://github.com/nothings/stb */
 
 #ifndef ENGINE_HPP
 #define ENGINE_HPP 1

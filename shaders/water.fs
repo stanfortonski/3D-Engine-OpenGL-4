@@ -18,7 +18,6 @@ const vec3 BRIGHT_FACTOR = vec3(0.2126, 0.7152, 0.0722);
 const int AMOUNT_OF_POINT_LIGHTS = 1;
 const vec3 NORMAL = vec3(0.0, 1.0, 0.0);
 const float WAVE_STR = 0.01;
-const float LIGHT_ATTENUATION = 0.9;
 
 struct PointLight
 {
@@ -104,7 +103,6 @@ vec3 calcPointLight(PointLight light, vec3 material, vec3 viewDir, vec3 normal, 
   float distances = length(fragToLightDir);
   fragToLightDir = normalize(fragToLightDir);
   float weakening = 1.0 / (light.constant + light.linear * distances + light.quadratic * pow(distances, 2));
-  weakening *= LIGHT_ATTENUATION;
 
   float diff = max(dot(fragToLightDir, normal), 0.0);
   vec3 halfwayDir = normalize(fragToLightDir + viewDir);
