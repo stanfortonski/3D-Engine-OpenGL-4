@@ -2,7 +2,7 @@
 
 #ifndef CONFIG_HPP
 #define CONFIG_HPP 1
-#define DEBUG_ENGINE 1
+#define DEBUG_ENGINE 0
 #include "support/Singleton.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -13,7 +13,7 @@ namespace Engine
   {
     friend class Singleton<Config>;
 
-    std::string title = "Engine Test";
+    std::string title = "3D Engine - OpenGL 4.1";
     unsigned majorVersion = 4;
     unsigned minorVersion = 1;
     unsigned windowWidth = 1280;
@@ -22,7 +22,7 @@ namespace Engine
     unsigned samples = 8;
     float cameraPitch = 0;
     float cameraYaw = -90;
-    float cameraSpeed = 10;
+    float cameraSpeed = 7;
     float cameraSensitivity = 0.1;
     float cameraFov = 45;
     float cameraFar = 1000;

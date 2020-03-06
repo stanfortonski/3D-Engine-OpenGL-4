@@ -25,7 +25,7 @@ namespace Engine
 
     virtual ~Window(){glfwTerminate();}
 
-    void create();
+    void create(bool fullscreen = false);
     void setRenderMethod(void (*func)()){loopCallback = func;}
     void startRender();
     void stopRender();

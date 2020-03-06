@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-  void Window::create()
+  void Window::create(bool fullscreen)
   {
     if (isCreate())
       return;
@@ -16,7 +16,9 @@ namespace Engine
     if (samples > 0)
       glfwWindowHint(GLFW_SAMPLES, samples);
 
-    frame = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
+    if (fullscreen)
+      frame = glfwCreateWindow(width, height, title.c_str(), glfwGetPrimaryMonitor(), nullptr);
+    else frame = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     if (!frame)
       throw std::runtime_error("Can\'t create GLFW window.");
     glfwMakeContextCurrent(frame);
