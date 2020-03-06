@@ -7,7 +7,7 @@ layout (location = 1) out vec4 brightColor;
 in vec2 texCoords;
 in vec3 fragPos;
 
-const int SHINENESS = 2;
+const int SHINENESS = 32;
 const vec3 BRIGHT_FACTOR = vec3(0.2126, 0.7152, 0.0722);
 const int AMOUNT_OF_POINT_LIGHTS = 1;
 const int DISCS_PCF_AMOUNT = 20;

@@ -10,9 +10,9 @@ in vec4 clipSpace;
 in vec3 fragPos;
 in vec2 texCoords;
 
-const int SHINENESS = 4096;
+const int SHINENESS = 256;
 const float WATER_DEPTH_FACTOR = 2.0;
-const vec4 WATER_COLOR = vec4(0.0, 0.25, 0.6, 1.0);
+const vec4 WATER_COLOR = vec4(0.0, 0.15, 0.6, 1.0);
 const float NORMAL_FACTOR = 2.5;
 const vec3 BRIGHT_FACTOR = vec3(0.2126, 0.7152, 0.0722);
 const int AMOUNT_OF_POINT_LIGHTS = 1;
@@ -84,7 +84,7 @@ void main()
 
   float fresnel = dot(viewDir, normal);
   material = mix(reflectColor, refractColor, fresnel);
-  material = mix(material, WATER_COLOR, 0.45);
+  material = mix(material, WATER_COLOR, 0.5);
 
   vec3 result = vec3(0.0, 0.0, 0.0);
   for (int i = 0; i < lightsAmount; ++i)
