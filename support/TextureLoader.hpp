@@ -7,6 +7,7 @@
 #include <vector>
 #include <GL/glew.h>
 #include <GL/glext.h>
+#include <stb_image.h>
 #include "../Config.hpp"
 
 namespace Engine
