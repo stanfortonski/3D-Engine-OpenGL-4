@@ -44,5 +44,5 @@
 - STB_IMAGE library - https://github.com/nothings/stb
 
 
-#### Example application that uses this graphics engine: https://github.com/stanfortonski/Procedural-Terrain-Generator-OpenGL
+#### Example application that uses this graphics engine: [Procedural Terrain Generator](https://github.com/stanfortonski/Procedural-Terrain-Generator-OpenGL)
   
