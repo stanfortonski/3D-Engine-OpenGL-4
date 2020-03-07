@@ -1,6 +1,8 @@
 /* Copyright (c) 2020 by Stan Fortoński */
 
 #include "TextureLoader.hpp"
+#include <stb_image.h>
+#define STB_IMAGE_IMPLEMENTATION
 
 namespace Engine
 {
