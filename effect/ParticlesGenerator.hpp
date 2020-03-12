@@ -24,7 +24,7 @@ namespace Engine
   class ParticlesGenerator: public Transformationable
   {
     InterfaceCamera * camera;
-    Program & particleProgram;
+    Program * particleProgram;
     std::vector<T> particles;
     std::vector<glm::vec3> positions;
     std::vector<glm::vec4> colors;
@@ -33,27 +33,27 @@ namespace Engine
     unsigned amount;
     P particleModel;
 
-    void respawnParticles();
-    void generateBuffers();
-    void updateBuffers();
-
   protected:
+    virtual void generateBuffers();
+    virtual void updateBuffers();
     virtual void respawnParticle(T & particle) = 0;
     virtual bool updateParticle(T & particle, const float & deltaTime) = 0;
+    virtual void afterUpdate(T & particle, const unsigned & n);
 
   public:
-    ParticlesGenerator(InterfaceCamera * cam, Program & program, const unsigned & particlesAmount);
+    ParticlesGenerator(InterfaceCamera * cam, Program & program):camera(cam), particleProgram(&program){;}
     virtual ~ParticlesGenerator(){;}
 
-    void update();
-    void render();
+    virtual void generate(const unsigned & particlesAmount);
+    virtual void update();
+    virtual void render();
     virtual void render(Program & program);
 
     virtual unsigned getVAO() const{return particleModel.getVAO();}
   };
 
   template <typename T, typename P>
-  ParticlesGenerator<T, P>::ParticlesGenerator(InterfaceCamera * cam, Program & program, const unsigned & particlesAmount): camera(cam), particleProgram(program)
+  void ParticlesGenerator<T, P>::generate(const unsigned & particlesAmount)
   {
     colors.resize(particlesAmount);
     positions.resize(particlesAmount);
@@ -68,10 +68,10 @@ namespace Engine
     glDisable(GL_CULL_FACE);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
-    particleProgram.use();
-    particleProgram.setMat4("viewProject", camera->getViewProjectionMatrix());
-    particleProgram.setMat4("model", getTransformMatrix());
-    particleModel.render(particleProgram, amount);
+    particleProgram->use();
+    particleProgram->setMat4("viewProject", camera->getViewProjectionMatrix());
+    particleProgram->setMat4("model", getTransformMatrix());
+    particleModel.render(*particleProgram, amount);
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glEnable(GL_CULL_FACE);
@@ -98,12 +98,18 @@ namespace Engine
       T & p = particles[i];
       if (updateParticle(p, dt))
       {
-        positions[i] = p.position;
-        colors[i] = p.color;
+        afterUpdate(p, i);
         ++amount;
       }
     }
     updateBuffers();
+  }
+
+  template <typename T, typename P>
+  void ParticlesGenerator<T, P>::afterUpdate(T & particle, const unsigned & n)
+  {
+    positions[n] = particle.position;
+    colors[n] = particle.color;
   }
 
   template <typename T, typename P>
