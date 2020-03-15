@@ -23,15 +23,17 @@ namespace Engine
 
   private:
     std::string font;
+    unsigned size;
     std::map<char, Character> characters;
 
 public:
     Font(){;}
-    Font(const std::string & fontPath);
+    Font(const std::string & fontPath, const unsigned & aSize = 48);
 
     void load(const std::string & fontPath);
 
     std::string getFontPath() const{return font;}
+    unsigned getSize() const{return size;}
     std::map<char, Character> & getCharacters(){return characters;}
   };
 }

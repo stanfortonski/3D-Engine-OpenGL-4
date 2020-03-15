@@ -45,13 +45,20 @@ namespace Engine
   void Engine::calcFPS()
   {
     float currentTime = glfwGetTime();
-    if ((currentTime - lastTimeFromShow) > 1)
+    if ((currentTime - lastTimeFromShow) >= 1)
     {
       actualFPS = std::to_string(frames)+" FPS";
       frames = 0;
       lastTimeFromShow = currentTime;
     }
     else ++frames;
+  }
+
+  void Engine::limitFPS(unsigned limit)
+  {
+    static double lastTime = 0;
+    while (glfwGetTime() < lastTime + 1.0/limit){;}
+    lastTime += 1.0/limit;
   }
 
   #if DEBUG_ENGINE == 1

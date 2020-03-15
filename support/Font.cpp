@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-  Font::Font(const std::string & fontPath)
+  Font::Font(const std::string & fontPath, const unsigned & aSize): size(aSize)
   {
     load(fontPath);
   }
@@ -23,7 +23,7 @@ namespace Engine
     if (FT_New_Face(freeType, fontPath.c_str(), 0, &face))
       throw std::runtime_error("Error FreeType: Failed to load font");
 
-    FT_Set_Pixel_Sizes(face, 0, 48);
+    FT_Set_Pixel_Sizes(face, 0, size);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
     for (unsigned char c = 0; c < 128; ++c)

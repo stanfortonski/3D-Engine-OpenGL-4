@@ -26,7 +26,7 @@ namespace Engine
     float cameraSensitivity = 0.1;
     float cameraFov = 45;
     float cameraFar = 1000;
-    float cameraNear = 0.01;
+    float cameraNear = 0.05;
     float shadowFar = 500;
     float anisotropy = 8;
     glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 0.0f);

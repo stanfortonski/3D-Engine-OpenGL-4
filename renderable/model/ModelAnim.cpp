@@ -21,7 +21,7 @@ namespace Engine
 
     if (scene->mAnimations[0]->mTicksPerSecond != 0.0)
       ticksPerSecond = scene->mAnimations[0]->mTicksPerSecond;
-    else ticksPerSecond = 25.0f;
+    else ticksPerSecond = 30.0f;
     duration = scene->mAnimations[0]->mDuration;
 
     globalInverseTransformation = scene->mRootNode->mTransformation;
@@ -76,7 +76,7 @@ namespace Engine
       std::vector<aiMatrix4x4> transforms;
       boneTransform(currentTime, transforms);
 
-      for (unsigned i = 0; i < boneLocations.size(); i++)
+      for (unsigned i = 0; i < boneLocations.size(); ++i)
         glUniformMatrix4fv(boneLocations[i], 1, GL_TRUE, (const float*)&transforms[i]);
 
       currentTime += Engine::get().getDeltaTime() * speed * way;

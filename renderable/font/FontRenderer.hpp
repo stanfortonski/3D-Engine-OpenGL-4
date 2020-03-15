@@ -36,6 +36,8 @@ namespace Engine
 
     void setText(const std::string & textLine){text = textLine;}
     std::string getText() const{return text;}
+
+    void getLineWidthAndHeight(float & width, float & height);
   };
 }
 #endif

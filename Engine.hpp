@@ -34,6 +34,7 @@ namespace Engine
     void initDefaultOptionsGL() const;
     void initDeltaTime();
     void calcFPS();
+    void limitFPS(unsigned limit);
 
     #if DEBUG_ENGINE == 1
     void showErrors();

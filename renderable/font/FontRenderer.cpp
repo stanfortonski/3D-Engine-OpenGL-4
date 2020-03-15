@@ -60,4 +60,20 @@ namespace Engine
     glBindVertexArray(0);
     Texture::unbind(GL_TEXTURE_2D);
   }
+
+  void FontRenderer::getLineWidthAndHeight(float & width, float & height)
+  {
+    std::map<char, Font::Character> & characters = font.getCharacters();
+    height = 0;
+    width = 0;
+    for (auto it = text.cbegin(); it != text.cend(); ++it)
+    {
+      Font::Character ch = characters[*it];
+      width += ch.size.x * scale;
+
+      float h = ch.size.y * scale;
+      if (height < h)
+        height = h;
+    }
+  }
 };

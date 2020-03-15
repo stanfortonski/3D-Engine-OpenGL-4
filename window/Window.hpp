@@ -35,11 +35,16 @@ namespace Engine
     void setSize(const unsigned & w, const unsigned & h);
     void setMode(const int & type, const int & value){glfwWindowHint(type, value);}
     void setInputMode(const int & type, const int & value){glfwSetInputMode(frame, type, value);}
+    void setEventInput(void (*func)(GLFWwindow *)){inputCallback = func;}
     void setEventResize(void (*func)(GLFWwindow *, int, int)){glfwSetFramebufferSizeCallback(frame, func);}
     void setEventKeyPress(void (*func)(GLFWwindow *, int, int, int, int)){glfwSetKeyCallback(frame, func);}
-    void setEventInput(void (*func)(GLFWwindow *)){inputCallback = func;}
     void setEventMouseMove(void (*func)(GLFWwindow *, double, double)){glfwSetCursorPosCallback(frame, func);}
     void setEventScroll(void (*func)(GLFWwindow *, double, double)){glfwSetScrollCallback(frame, func);}
+    void setEventCharacter(void (*func)(GLFWwindow *, unsigned)){glfwSetCharCallback(frame, func);}
+    void setEventCursorEnter(void (*func)(GLFWwindow *, int)){glfwSetCursorEnterCallback(frame, func);}
+    void setEventMouseButtonPress(void (*func)(GLFWwindow *, int, int, int)){glfwSetMouseButtonCallback(frame, func);}
+    void setEventJoystick(void (*func)(int, int)){glfwSetJoystickCallback(func);}
+    void setEventDrop(void (*func)(GLFWwindow *, int, const char**)){glfwSetDropCallback(frame, func);}
 
     unsigned getWidth() const{return width;}
     unsigned getHeight() const{return height;}
