@@ -63,17 +63,25 @@ namespace Engine
 
   void FontRenderer::getLineWidthAndHeight(float & width, float & height)
   {
-    std::map<char, Font::Character> & characters = font.getCharacters();
     height = 0;
     width = 0;
+    std::map<char, Font::Character> & characters = font.getCharacters();
     for (auto it = text.cbegin(); it != text.cend(); ++it)
     {
       Font::Character ch = characters[*it];
-      width += ch.size.x * scale;
+
+      float size;
+      if (ch.size.x == 0)
+        size = ch.advance/font.getSize() + 4;
+      else size = ch.size.x;
+
+      width += size + ch.bearing.x*2;
 
       float h = ch.size.y * scale;
       if (height < h)
         height = h;
     }
+    width *= scale;
+    height *= scale;
   }
 };

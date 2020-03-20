@@ -65,7 +65,6 @@ namespace Engine
   {
     static Plane quad;
     glDisable(GL_DEPTH_TEST);
-    glDisable(GL_BLEND);
 
     program.use();
     program.setMat4("model", model);
@@ -79,6 +78,5 @@ namespace Engine
     quad.render(program);
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
   }
 }
