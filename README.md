@@ -42,6 +42,7 @@
 - Assimp library - https://github.com/assimp/assimp
 - FreeType library - https://www.freetype.org
 - STB_IMAGE library - https://github.com/nothings/stb
+- nlohmann/json - https://github.com/nlohmann/json
 
 
 #### Example applications that use this graphics engine: [Procedural Terrain Generator](https://github.com/stanfortonski/Procedural-Terrain-Generator-OpenGL) & [Stickman 3D](https://github.com/stanfortonski/StickMan-3D)
